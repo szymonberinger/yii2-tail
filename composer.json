@@ -1,0 +1,20 @@
+{
+  "name": "szymonberinger/yii2-tail",
+  "description": "",
+  "keywords": ["yii2", "tail", "log"],
+  "type": "yii2-extension",
+  "authors": [
+    {
+      "name": "Szymon Beringer",
+      "email": "szymon.beringer@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "szymonberinger\\tail\\": "src"
+    }
+  }
+}
