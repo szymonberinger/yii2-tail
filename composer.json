@@ -1,8 +1,10 @@
 {
   "name": "szymonberinger/yii2-tail",
   "description": "Console command to tail the application log",
-  "keywords": ["yii2", "tail", "log"],
+  "keywords": ["yii2", "extension", "tail", "log"],
+  "homepage": "https://github.com/szymonberinger/yii2-tail",
   "type": "yii2-extension",
+  "license": "MIT",
   "authors": [
     {
       "name": "Szymon Beringer",
