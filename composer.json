@@ -1,6 +1,6 @@
 {
   "name": "szymonberinger/yii2-tail",
-  "description": "",
+  "description": "Console command to tail the application log",
   "keywords": ["yii2", "tail", "log"],
   "type": "yii2-extension",
   "authors": [
