@@ -9,7 +9,7 @@ use yii\helpers\Console;
 
 class TailController extends Controller
 {
-    protected $_path;
+    private $_path;
 
     public function actionIndex($lines = 50)
     {
@@ -18,16 +18,16 @@ class TailController extends Controller
             return;
         }
 
-        $log_file = $this->getLastModifiedLogFile();
+        $logFile = $this->getLastModifiedLogFile();
 
-        if (!file_exists($log_file)) {
+        if (!file_exists($logFile)) {
             $this->stderr("Could not find a log file in {$this->_path}" . PHP_EOL, Console::FG_RED);
             return;
         }
 
-        $this->stdout("Start tailing {$log_file}" . PHP_EOL . PHP_EOL, Console::FG_GREEN);
+        $this->stdout("Start tailing {$logFile}" . PHP_EOL . PHP_EOL, Console::FG_GREEN);
 
-        $output = shell_exec("tail -n{$lines} {$log_file}");
+        $output = shell_exec("tail -n{$lines} {$logFile}");
 
         $this->stdout($output . PHP_EOL);
     }
@@ -39,21 +39,21 @@ class TailController extends Controller
         return parent::beforeAction($action);
     }
 
-    protected function getLastModifiedLogFile()
+    private function getLastModifiedLogFile()
     {
-        $log_file = '';
-        $timestamp = 0;
+        $logFile = '';
+        $timeStamp = 0;
 
         $files = new DirectoryIterator($this->_path);
         foreach ($files as $file) {
             if (!$file->isDot()) {
-                if ($file->getMTime() > $timestamp) {
-                    $log_file = $this->_path . DIRECTORY_SEPARATOR . $file->getFilename();
-                    $timestamp = $file->getMTime();
+                if ($file->getMTime() > $timeStamp) {
+                    $logFile = $this->_path . DIRECTORY_SEPARATOR . $file->getFilename();
+                    $timeStamp = $file->getMTime();
                 }
             }
         }
 
-        return $log_file;
+        return $logFile;
     }
 }
