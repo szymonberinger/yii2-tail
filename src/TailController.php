@@ -13,28 +13,30 @@ class TailController extends Controller
 
     public function actionIndex($lines = 50)
     {
-        if(!is_dir($this->_path)) {
-            $this->stderr('Log directory not found' . PHP_EOL, Console::FG_RED);
+        if (!is_dir($this->_path)) {
+            $this->stderr('Log directory not found'.PHP_EOL, Console::FG_RED);
+
             return;
         }
 
         $logFile = $this->getLastModifiedLogFile();
 
         if (!file_exists($logFile)) {
-            $this->stderr("Could not find a log file in {$this->_path}" . PHP_EOL, Console::FG_RED);
+            $this->stderr("Could not find a log file in {$this->_path}".PHP_EOL, Console::FG_RED);
+
             return;
         }
 
-        $this->stdout("Start tailing {$logFile}" . PHP_EOL . PHP_EOL, Console::FG_GREEN);
+        $this->stdout("Start tailing {$logFile}".PHP_EOL.PHP_EOL, Console::FG_GREEN);
 
         $output = shell_exec("tail -n{$lines} {$logFile}");
 
-        $this->stdout($output . PHP_EOL);
+        $this->stdout($output.PHP_EOL);
     }
 
     public function beforeAction($action)
     {
-        $this->_path = Yii::$app->basePath . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR . 'logs';
+        $this->_path = Yii::$app->basePath.DIRECTORY_SEPARATOR.'runtime'.DIRECTORY_SEPARATOR.'logs';
 
         return parent::beforeAction($action);
     }
@@ -48,7 +50,7 @@ class TailController extends Controller
         foreach ($files as $file) {
             if (!$file->isDot()) {
                 if ($file->getMTime() > $timeStamp) {
-                    $logFile = $this->_path . DIRECTORY_SEPARATOR . $file->getFilename();
+                    $logFile = $this->_path.DIRECTORY_SEPARATOR.$file->getFilename();
                     $timeStamp = $file->getMTime();
                 }
             }
