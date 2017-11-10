@@ -4,6 +4,7 @@ yii2-tail
 [![Latest Stable Version](https://poser.pugx.org/szymonberinger/yii2-tail/v/stable)](https://packagist.org/packages/szymonberinger/yii2-tail)
 [![License](https://poser.pugx.org/szymonberinger/yii2-tail/license)](https://packagist.org/packages/szymonberinger/yii2-tail)
 [![Total Downloads](https://poser.pugx.org/szymonberinger/yii2-tail/downloads)](https://packagist.org/packages/szymonberinger/yii2-tail)
+[![StyleCI](https://styleci.io/repos/110142913/shield?branch=master)](https://styleci.io/repos/110142913)
 
 Extension provides console command to tail the application log.
 
